@@ -1,0 +1,49 @@
+[System]
+Name='propina'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Servicio'
+Range=[0 100]
+NumMFs=4
+MF1='Pesimo':'gaussmf',[7.07768166906682 1.33e-15]
+MF2='Malo':'gaussmf',[8.39750078411757 33.3]
+MF3='Bueno':'gaussmf',[8.90349885137912 66.7]
+MF4='Perfecto':'gaussmf',[9.32456473861187 100]
+
+[Input2]
+Name='Comida'
+Range=[0 100]
+NumMFs=4
+MF1='Mala':'trapmf',[-30 -3.33 3.33 14.9470899470899]
+MF2='Deshabrida':'trapmf',[14.9 30.8 37.5 49.6031746031746]
+MF3='Rica':'trapmf',[49.6 63.3 70 80.2910052910053]
+MF4='Muy_Rica':'trapmf',[80.8201058201058 96.7 103 130]
+
+[Output1]
+Name='Propina'
+Range=[0 15]
+NumMFs=4
+MF1='Muy_Mala':'trimf',[-5 -5.55e-17 2.36111111111111]
+MF2='Mala':'trimf',[2.36 5 7.48015873015873]
+MF3='Buena':'trimf',[7.48 10 12.1626984126984]
+MF4='Muy_buena':'trimf',[12.202380952381 15 20]
+
+[Rules]
+1 1, 1 (1) : 1
+2 2, 2 (1) : 1
+3 3, 3 (1) : 1
+4 4, 4 (1) : 1
+2 1, 1 (1) : 1
+1 2, 2 (1) : 1
+4 3, 3 (1) : 1
+3 4, 4 (1) : 1
